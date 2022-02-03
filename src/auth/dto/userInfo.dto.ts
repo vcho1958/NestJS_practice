@@ -6,4 +6,5 @@ import { AuthenticationDto } from "./authentication.dto";
 
 export class UserInfoDto extends AuthenticationDto {
   role: UserRole;
+  email: string;
 }

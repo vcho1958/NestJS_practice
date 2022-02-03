@@ -124,10 +124,14 @@ const errors: ErrorObject = {
     status: HttpStatus.BAD_REQUEST,
     message: '역할 정보가 필요합니다.',
   },
+  USER_NOT_FOUND: {
+    status: HttpStatus.BAD_REQUEST,
+    message: '존재하지 않는 사용자입니다.',
+  },
 };
 
 Object.keys(errors).forEach(
   (code) => (errors[code] = { ...errors[code], code }),
 );
-
-export default { ...errors };
+export const DUPLICATE_USERNAME = errors.DUPLICATE_USERNAME;
+export default errors;
