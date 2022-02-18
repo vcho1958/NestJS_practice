@@ -14,11 +14,10 @@ export abstract class UserRepository {
   async createUser(userInfoDto: UserInfoDto): Promise<User>{
     const { username } = userInfoDto;
     if (await this.findByUsername(username)) throw new CustomException(DUPLICATE_USERNAME);
-    return await this.save(userInfoDto);
+    return this.save(userInfoDto);
   }
-  async deleteUserById(id: number) {
+  async deleteUserById(id: number): Promise<Boolean> {
     if (!await this.findById(id)) throw new CustomException(USER_NOT_FOUND);
+    return true;
   }
-
-  async
 }

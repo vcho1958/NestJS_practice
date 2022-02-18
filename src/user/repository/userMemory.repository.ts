@@ -7,7 +7,7 @@ import { UserRepository } from './user.repository';
 import errors from '../../exception/index';
 const { DUPLICATE_USERNAME } = errors;
 @Injectable()
-export class UserMemoryRepository extends UserRepository{
+export class UserMemoryRepository extends UserRepository {
   User: Array<User>;
   constructor() {
     super();
@@ -23,15 +23,9 @@ export class UserMemoryRepository extends UserRepository{
   findAllByRole(role: UserRole): Promise<User[]>{
     return new Promise<User[]>((resolve, reject) => resolve(this.User.filter(user => user.role === role)));
   };
-
-  async createUser(userInfoDto: UserInfoDto): Promise<User>{
-    const { username } = userInfoDto;
-    if (await this.findByUsername(username)) throw new CustomException(DUPLICATE_USERNAME);
-    
-  }
-
-  async save(user: User): Promise<User>{
-    const result = await findByUsername(username);
-    this.User.push(user);
+  async save(userInfoDto: UserInfoDto): Promise<User>{
+    const result = await this.findByUsername(userInfoDto.username);
+    this.User.push({...userInfoDto, id: this.User.length});
+    return this.User[-1];
   }
 }

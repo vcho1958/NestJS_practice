@@ -133,5 +133,4 @@ const errors: ErrorObject = {
 Object.keys(errors).forEach(
   (code) => (errors[code] = { ...errors[code], code }),
 );
-export const DUPLICATE_USERNAME = errors.DUPLICATE_USERNAME;
 export default errors;
