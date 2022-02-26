@@ -1,6 +1,8 @@
+import { UserRole } from "src/auth/enum/userRole.enum";
 import { DeepPartial } from "typeorm";
 
-export class Authentication<E>{
-    body?: DeepPartial<E>;
-    sub: number;
+export class Authentication{
+    username: string;
+    role: UserRole;
+    id: number;
 }
