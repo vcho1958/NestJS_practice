@@ -7,6 +7,7 @@ import { CustomException } from 'src/exception/customException';
 import { Authentication } from 'src/class/Authentication';
 import { UserInfoDto } from 'src/dto/userInfo.dto';
 import { UserInformation } from 'src/user-info/entity/UserInformation';
+import { LoginDataDto } from 'src/dto/loginData.dto';
 const {WRONG_LOGIN_DATA} = errors;
 @Injectable()
 export class AuthService {
@@ -15,7 +16,8 @@ export class AuthService {
     private userInfoService: UserInfoService
     ){}
   
-  async validateUser(username: string, password: string): Promise<User>{
+  async validateUser(loginData:LoginDataDto): Promise<User>{
+    const {username, password} = loginData;
     const user = await this.userService.getUserByUsername(username);
     if(!this.userService.comparePassword(password, user.password)) throw new CustomException(WRONG_LOGIN_DATA);
     return user;
@@ -29,7 +31,7 @@ export class AuthService {
     return currentUser;
   }
 
-  async signUp(userInfoDto: UserInfoDto): Promise<UserInformation>{
+  async join(userInfoDto: UserInfoDto): Promise<UserInformation>{
     const {user : {username}, user} = userInfoDto;
     await this.userService.checkDuplicateOfUsername(username);
     await this.userInfoService.checkDuplicateOfUserInformation(userInfoDto);
