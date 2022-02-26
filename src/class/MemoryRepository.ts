@@ -1,13 +1,13 @@
 import { IRepository } from "src/interface/IRepository";
 import { DeepPartial } from "typeorm";
-import { EntityClass } from "./Entity";
+import { EntityClass } from "./EntityClass";
 
 export class MemoryRepository<E extends EntityClass> implements IRepository<E> {
   Memory: Array<E>;
   constructor() {
     this.Memory = [];
   }
-  
+
   save(entity: E | DeepPartial<E>): Promise<E> {
     throw new Error("Method not implemented.");
   }
