@@ -49,7 +49,10 @@ const errors: ErrorObject = {
     status: HttpStatus.CONFLICT,
     message: '이미 가입되어있는 휴대폰 번호입니다.',
   },
-
+  EQUAL_PASSWORD: {
+    status: HttpStatus.CONFLICT,
+    message: '기존 비밀번호와 동일합니다.',
+  },
   /*
     관리자 페이지
   */
@@ -67,6 +70,10 @@ const errors: ErrorObject = {
   WRONG_LOGIN_DATA: {
     status: HttpStatus.BAD_REQUEST,
     message: '아이디 혹은 비밀번호가 맞지 않습니다.',
+  },
+  WRONG_CURRENT_PASSWORD:{
+    status: HttpStatus.BAD_REQUEST,
+    message: '현재 비밀번호가 일치하지 않습니다.',
   },
   WRONG_USERNAME: {
     status: HttpStatus.BAD_REQUEST,
@@ -124,10 +131,17 @@ const errors: ErrorObject = {
     status: HttpStatus.BAD_REQUEST,
     message: '역할 정보가 필요합니다.',
   },
+  USER_NOT_FOUND: {
+    status: HttpStatus.BAD_REQUEST,
+    message: '존재하지 않는 사용자입니다.',
+  },
+  USER_INFORMATION_NOT_FOUND: {
+    status: HttpStatus.BAD_REQUEST,
+    message: '사용자 정보가 존재하지 않습니다.',
+  },
 };
 
 Object.keys(errors).forEach(
   (code) => (errors[code] = { ...errors[code], code }),
 );
-
-export default { ...errors };
+export default errors;
