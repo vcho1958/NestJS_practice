@@ -1,4 +1,4 @@
-import { UserRole } from "../auth/enum/userRole.enum";
+import { UserRole } from "../constants";
 import { LoginDataDto } from "./loginData.dto";
 
 export class UserDto extends LoginDataDto {

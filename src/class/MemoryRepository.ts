@@ -1,15 +1,12 @@
 import { IRepository } from "src/interface/IRepository";
-import { DeepPartial } from "typeorm";
+import { DeepPartial, RemoveOptions, Repository } from "typeorm";
 import { EntityClass } from "./EntityClass";
 
-export class MemoryRepository<E extends EntityClass> implements IRepository<E> {
+export class MemoryRepository<E extends EntityClass> extends Repository<E>{
   Memory: Array<E>;
   constructor() {
+    super();
     this.Memory = [];
-  }
-
-  save(entity: E | DeepPartial<E>): Promise<E> {
-    throw new Error("Method not implemented.");
   }
 
   async findOne(condition:Object): Promise<E>{
@@ -30,13 +27,9 @@ export class MemoryRepository<E extends EntityClass> implements IRepository<E> {
     });
   };
   
-  async findById(id: number): Promise<E> {
+  async findOneById(id: number): Promise<E> {
     return this.Memory.find(entity => entity.id === id);
   }
 
-  async remove(user: E): Promise<E> {
-    delete this.Memory[this.Memory.indexOf(this.Memory.find(target=> user.id === target.id))];
-    return user;
-  }
 
 }

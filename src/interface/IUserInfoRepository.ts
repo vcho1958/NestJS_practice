@@ -1,5 +1,4 @@
-import { UserInfoDto } from 'src/dto/userInfo.dto';
-import { UserInformation } from '../user-info/entity/UserInformation';
+import { UserInformation } from '../entity/UserInformation.entity';
 import { IRepository } from './IRepository';
 
 export interface IUserInfoRepository extends IRepository<UserInformation> {

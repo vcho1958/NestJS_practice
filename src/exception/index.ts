@@ -135,6 +135,10 @@ const errors: ErrorObject = {
     status: HttpStatus.BAD_REQUEST,
     message: '존재하지 않는 사용자입니다.',
   },
+  POST_NOT_FOUND: {
+    status: HttpStatus.BAD_REQUEST,
+    message: '존재하지 않는 게시물입니다.',
+  },
   USER_INFORMATION_NOT_FOUND: {
     status: HttpStatus.BAD_REQUEST,
     message: '사용자 정보가 존재하지 않습니다.',

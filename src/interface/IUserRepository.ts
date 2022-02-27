@@ -1,5 +1,5 @@
-import { UserRole } from 'src/auth/enum/userRole.enum';
-import { User } from '../user/entity/User';
+import { UserRole } from 'src/constants';
+import { User } from '../entity/user.entity';
 import { IRepository } from './IRepository';
 
 export interface IUserRepository  extends IRepository<User>{

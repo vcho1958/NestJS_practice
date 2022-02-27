@@ -1,9 +1,7 @@
-import { DeepPartial } from "typeorm";
+import { DeepPartial, Repository } from "typeorm";
 
-export interface IRepository<Entity>{
+export interface IRepository<Entity> extends Repository<Entity> {
   find(condition: Object):Promise<Entity[]>;
   findOne(condition: Object):Promise<Entity>;
-  findById(id: number): Promise<Entity>;
-  save(entity: Entity|DeepPartial<Entity>): Promise<Entity>;
-  remove(user: Entity): Promise<Entity>;
+  findOneById(id: number): Promise<Entity>;
 }
